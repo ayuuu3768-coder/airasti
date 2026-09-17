@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Siswa SMK - DKV</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================
+       VARIABLES & RESET
+       ========================================== */
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --gradient-1: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+      --gradient-2: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
+      --radius: 18px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 12px;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 50px;
+      font-size: 1rem;
+    }
+
+    /* ==========================================
+       NAVBAR
+       ========================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--text-main);
+    }
+
+    /* ==========================================
+       HERO SECTION
+       ========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 50px;
+      color: #818cf8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-title .gradient-text {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gradient-1);
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(236, 72, 153, 0.6);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+    }
+
+    .hero-img-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .img-wrapper {
+      position: relative;
+      width: 320px;
+      height: 380px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-card);
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 30px;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .glow-bg {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: var(--gradient-1);
+      filter: blur(90px);
+      opacity: 0.35;
+      z-index: -1;
+      border-radius: 50%;
+    }
+
+    /* ==========================================
+       TENTANG SAYA & BIODATA
+       ========================================== */
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .biodata-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .biodata-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .biodata-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .biodata-info h4 {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .biodata-info p {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================
+       KEAHLIAN & CITA-CITA
+       ========================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.4);
+      background: var(--bg-card-hover);
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .skill-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: var(--gradient-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: white;
+    }
+
+    .dream-box {
+      background: var(--gradient-2);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+      color: white;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .dream-box h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    /* ==========================================
+       PENDIDIKAN
+       ========================================== */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+      width: 50%;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 30px;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      padding-left: 30px;
+      text-align: left;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--secondary);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -8px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -8px;
+    }
+
+    .timeline-content {
+      background: var(--bg-card);
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    /* ==========================================
+       PORTOFOLIO / KARYA
+       ========================================== */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .portfolio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(236, 72, 153, 0.4);
+    }
+
+    .portfolio-img {
+      height: 200px;
+      width: 100%;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .portfolio-card:hover .portfolio-img img {
+      transform: scale(1.08);
+    }
+
+    .portfolio-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .portfolio-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .portfolio-title {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .portfolio-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    /* ==========================================
+       KONTAK & FOOTER
+       ========================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-card);
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background: var(--gradient-1);
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    /* ==========================================
+       RESPONSIVE DESIGN (MOBILE & TABLET)
+       ========================================== */
+    @media (max-width: 992px) {
+      .hero-grid, .about-card, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title { font-size: 2.8rem; }
+      .timeline::before { left: 20px; }
+      .timeline-item { width: 100%; padding-left: 50px !important; text-align: left !important; }
+      .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-menu {
+        position: fixed;
+        top: 75px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 75px);
+        background: var(--bg-dark);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: var(--transition);
+      }
+      .nav-menu.active { right: 0; }
+      .hero-title { font-size: 2.2rem; }
+      .img-wrapper { width: 260px; height: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#beranda" class="logo">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--secondary);"></i>
+        <span id="nav-logo-text">Portofolio</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+        <li><a href="#tentang" class="nav-link">Tentang</a></li>
+        <li><a href="#keahlian" class="nav-link">Keahlian</a></li>
+        <li><a href="#pendidikan" class="nav-link">Pendidikan</a></li>
+        <li><a href="#portofolio" class="nav-link">Karya</a></li>
+        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BERANDA (HERO) -->
+  <section id="beranda" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="badge">
+            <i class="fa-solid fa-graduation-cap"></i> Siswa SMK DKV
+          </div>
+          <h1 class="hero-title">Halo, Saya <br><span class="gradient-text" id="hero-nama">Nama Siswa</span></h1>
+          <h3 class="hero-subtitle" id="hero-jurusan-sekolah">Jurusan & Sekolah</h3>
+          <p class="hero-desc" id="hero-deskripsi">Deskripsi singkat tentang siswa akan ditampilkan di sini.</p>
+          <div class="hero-buttons">
+            <a href="#portofolio" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Lihat Karya</a>
+            <a href="#kontak" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i> Hubungi Saya</a>
+          </div>
+        </div>
+        <div class="hero-img-container">
+          <div class="glow-bg"></div>
+          <div class="img-wrapper">
+            <img id="hero-foto" src="" alt="Foto Profil">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG SAYA -->
+  <section id="tentang" class="section">
+    <div class="container">
+      <h2 class="section-title">Tentang Saya</h2>
+      <p class="section-subtitle">Mengenal lebih dekat latar belakang dan identitas saya</p>
+
+      <div class="about-card">
+        <div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 16px;">Profil Singkat</h3>
+          <p id="about-deskripsi" style="color: var(--text-muted); margin-bottom: 24px;">
+            Deskripsi lengkap tentang diri siswa.
+          </p>
+        </div>
+        <div class="biodata-list">
+          <div class="biodata-item">
+            <div class="biodata-icon"><i class="fa-solid fa-user"></i></div>
+            <div class="biodata-info">
+              <h4>Nama Lengkap</h4>
+              <p id="bio-nama">-</p>
+            </div>
+          </div>
+          <div class="biodata-item">
+            <div class="biodata-icon"><i class="fa-solid fa-calendar-day"></i></div>
+            <div class="biodata-info">
+              <h4>Tempat, Tanggal Lahir</h4>
+              <p id="bio-ttl">-</p>
+            </div>
+          </div>
+          <div class="biodata-item">
+            <div class="biodata-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="biodata-info">
+              <h4>Alamat</h4>
+              <p id="bio-alamat">-</p>
+            </div>
+          </div>
+          <div class="biodata-item">
+            <div class="biodata-icon"><i class="fa-solid fa-school"></i></div>
+            <div class="biodata-info">
+              <h4>Kelas & Sekolah</h4>
+              <p id="bio-kelas-sekolah">-</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEAHLIAN & CITA-CITA -->
+  <section id="keahlian" class="section">
+    <div class="container">
+      <h2 class="section-title">Keahlian Utama</h2>
+      <p class="section-subtitle">Keterampilan teknis dan kreativitas yang saya tekuni</p>
+
+      <div class="skills-grid" id="skills-container">
+        <!-- Keahlian di-generate via JS -->
+      </div>
+
+      <div class="dream-box">
+        <i class="fa-solid fa-lightbulb" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.9;"></i>
+        <h3>Cita - Cita Masa Depan</h3>
+        <p id="text-cita-cita" style="font-size: 1.2rem; font-weight: 600;">-</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENDIDIKAN -->
+  <section id="pendidikan" class="section">
+    <div class="container">
+      <h2 class="section-title">Riwayat Pendidikan</h2>
+      <p class="section-subtitle">Jejak langkah pendidikan formal saya</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span style="color: var(--accent); font-size: 0.85rem; font-weight: 700;">SEKARANG</span>
+            <h4 style="font-size: 1.1rem; margin: 4px 0;" id="edu-smk-nama">SMK</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;" id="edu-smk-jurusan">Jurusan Desain Komunikasi Visual</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 700;">SEKOLAH MENENGAH PERTAMA</span>
+            <h4 style="font-size: 1.1rem; margin: 4px 0;">SMP / MTs</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Lulus Pendidikan Dasar Menengah Pertama</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTOFOLIO / KARYA -->
+  <section id="portofolio" class="section">
+    <div class="container">
+      <h2 class="section-title">Hasil Karya</h2>
+      <p class="section-subtitle">Proyek desain dan kreativitas yang telah saya buat</p>
+
+      <div class="portfolio-grid" id="portfolio-container">
+        <!-- Karya di-generate via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="kontak" class="section">
+    <div class="container">
+      <h2 c
